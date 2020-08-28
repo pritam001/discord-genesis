@@ -1,0 +1,28 @@
+{
+  "name": "discord-genesis",
+  "version": "1.0.0",
+  "description": "Discord Genesis Megabot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pritam001/discord-genesis.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Pritam Sarkar <001pritam2012@gmail.com> (https://github.com/pritam001)",
+  "license": " GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/pritam001/discord-genesis/issues"
+  },
+  "homepage": "https://github.com/pritam001/discord-genesis#readme",
+  "dependencies": {
+    "discord.js": "12.3.1",
+    "dotenv": "8.2.0",
+    "nodemon": "2.0.4"
+  }
+}
