@@ -1,6 +1,6 @@
 🎭 Discord Genesis 🎭
 ----------------------------------------------------------------
-Personalised Discord mega-bot running chores for blogs/news/videos/music compilation, news, challenges, games
+Personalized Discord mega-bot running chores for blogs/news/videos/music compilation, news, challenges, games
 
 ![Discord.js](https://img.shields.io/badge/-Discord.js-black?style=flat-square&logo=Discord)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
