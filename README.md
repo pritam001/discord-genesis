@@ -20,7 +20,7 @@ Bot Ideas
 - [ ] Weather Bot : Print today's weather on specified channel
 - [ ] Coder Sensei Bot : Daily challenges / knowledge / contests
 - [ ] Tech Journo Bot : Compilation from et-daily / dev-weekly / international channels
-- [ ] Otaku Sensei Bot : Subscribe for regular updates on Anime
+- [ ] Otaku Senpai Bot : Subscribe for regular updates on Anime
 - [ ] Anonymous DJ Bot : Music runner / queue / challenges / games
 - [ ] Mitsuki Bot : Mitsuku trying to pass the Turing test
 - [ ] Hermes Bot : Trading news / subscription / updates for buy-sell
