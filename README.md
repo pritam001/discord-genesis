@@ -17,6 +17,8 @@ Currently all bots will run locally. Accepted bot ideas will be implemented.
 
 Bot Ideas
 ----------------------------------------------------------------
+- [ ] Role Manager Bot: Handle roles, add, remove roles using message reactions
+- [ ] Verification Bot: User verifier using Discord messages
 - [ ] Weather Bot : Print today's weather on specified channel
 - [ ] Coder Sensei Bot : Daily challenges / knowledge / contests
 - [ ] Tech Journo Bot : Compilation from et-daily / dev-weekly / international channels
