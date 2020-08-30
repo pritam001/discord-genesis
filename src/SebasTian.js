@@ -89,18 +89,19 @@ client.on("message", (message) => {
                 .setDescription(BUMP_SERVER_MESSAGE);
             message.channel.send(embeddedMessage);
             last_bump_message_date = new Date();
+            console.log(`last_bump_message_date changed to : ${last_bump_message_date}`);
         }
 
         if(message.content === DISBOARD_BUMP_COMMAND) {
-            console.log("Bump command received");
             const userId = "<@" + message.author.id + ">";
+            console.log(`Bump command received from User. username: ${message.author.username} with userId: ${userId}`);
             setTimeout(sendMessagePostXSeconds, PROMOTION_MESSAGE_DELAY_IN_MS, message.channel, userId, SERVER_SELF_PROMOTION_MESSAGE);
         }
     }
 });
 
 function sendMessagePostXSeconds(channel, userId, messageTemplate) {
-    console.log("Sending post bump message");
+    console.log(`Sending post bump message to userId: ${userId}`);
     const embeddedMessage = new MessageEmbed()
         .setColor(BOT_EMBED_COLOR)
         .setDescription(userId + " " + messageTemplate);
