@@ -14,6 +14,20 @@
  * 3. Send other types of server promoting message.
  ***/
 
+
+// ================ START SERVER CODE ==================
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('SebasTianAI is online!'));
+
+app.listen(port, () => console.log(`SebasTianAI app listening at http://localhost:${port}`));
+
+
+// ================= START BOT CODE ===================
+
 'use strict';
 
 require("dotenv").config();
