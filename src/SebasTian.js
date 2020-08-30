@@ -9,11 +9,12 @@
 
 /***
  * Feature: Bump server cron
- * 1. If any activity is noticed on forum, check if there has been any server bump in last 2 hours.
- * 2. Send server bump message
- * 3. Send other server promoting message
+ * 1. If any kind of activity happens on guild forum, check if there has been any server bump in last 2 hours.
+ * 2. Send server bump message.
+ * 3. Send other types of server promoting message.
  ***/
 
+'use strict';
 
 require("dotenv").config();
 
@@ -23,19 +24,24 @@ const client = new Client();
 
 
 // Global constants
+const BOT_NAME = "SebasTian";
+const FORUM_CHANNEL_ID = "748976524484542684";
+const DEFAULT_LAST_BUMP_DATE = moment().subtract(1, "days");
+const DISBOARD_BUMP_INTERVAL = 5 * 60; // 2 hours
+const DISBOARD_BUMP_COMMAND = "!d bump";
 const BUMP_SERVER_MESSAGE =
     "*Greetings! :person_bowing: Please bump and help the growth of this server!* \n" +
     "\n" + "I can't do it because **I officially count as a bot**, but you can!\n" +
     "\n" + "Just send a message saying `!d bump` in this channel " +
     "and this server will be put to the top of the server list on Disboard" +
     " so that more people can see and join this server.";
-const FORUM_CHANNEL_ID = "748976524484542684";
-const DISBOARD_BUMP_INTERVAL = 2 * 60 * 60; // 2 hours
-const DISBOARD_BUMP_COMMAND = "!d bump";
+const SERVER_SELF_PROMOTION_MESSAGE =
+    "*Thank you! :person_bowing: Kindly share your rating and reviews on Disboard!* \n" +
+    "Disboard review link";
 
 
 // Bot variables
-let last_bump_message_date = new Date();
+let last_bump_message_date = DEFAULT_LAST_BUMP_DATE;
 
 // Bot login process
 client.login(process.env.SEBASTIAN_BOT_TOKEN).then(() => {
@@ -52,11 +58,16 @@ client.on("ready", () => {
             .then(fetchedMessages => {
                 console.log(`Received last ${fetchedMessages.size} messages`);
                 for(let message of fetchedMessages) {
-                    if(message[1].content.includes(DISBOARD_BUMP_COMMAND)) {
-                        last_bump_message_date = message[1].createdTimestamp;
-                        console.log("Last bump message received on " + new Date(last_bump_message_date));
-                        break;
+                    if(message[1].author.username === BOT_NAME) {
+                        if(message[1].content.includes(DISBOARD_BUMP_COMMAND)) {
+                            last_bump_message_date = message[1].createdTimestamp;
+                            console.log("Last bump message received on " + new Date(last_bump_message_date));
+                            break;
+                        }
                     }
+                }
+                if(last_bump_message_date <= DEFAULT_LAST_BUMP_DATE) {
+                    console.log(`Not found bump message in last ${fetchedMessages.size} messages`);
                 }
             }).catch(console.error);
     }));
@@ -72,9 +83,13 @@ client.on("message", (message) => {
     if(!message.author.bot) {
         if(message.content === DISBOARD_BUMP_COMMAND) {
             console.log("Bump command received");
-            // start timer for reply message
+            setTimeout(sendMessagePostXSeconds, 10, message.channel, SERVER_SELF_PROMOTION_MESSAGE);
         }
     }
 });
 
+function sendMessagePostXSeconds(channel, template) {
+    console.log("Sending post bump message");
+    channel.send(template);
+}
 

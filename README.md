@@ -9,8 +9,10 @@ Personalized Discord mega-bot running chores for blogs/news/videos/music compila
 
 Active Bots
 ----------------------------------------------------------------
-### SebasTian: Private cron bot
-1. Cron for server bump message
+### SebasTian: Forum butler bot
+1. If any kind of activity happens on guild forum, check if there has been any server bump in last 2 hours.
+2. Send server bump message.
+3. Send other types of server promoting message.
 
 
 Roadmap
