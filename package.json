@@ -4,9 +4,11 @@
   "description": "Discord Genesis Megabot",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/bot.js",
-    "dev": "nodemon ./src/bot.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "samplebot": "node src/SampleBot.js",
+    "samplebot-dev": "nodemon src/SampleBot.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sebastian": "node src/SebasTian.js",
+    "sebastian-dev": "nodemon src/SebasTian.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   "dependencies": {
     "discord.js": "12.3.1",
     "dotenv": "8.2.0",
+    "moment": "2.27.0",
     "nodemon": "2.0.4"
   }
 }
