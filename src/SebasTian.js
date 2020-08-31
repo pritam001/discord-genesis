@@ -41,7 +41,7 @@ const client = new Client();
 const BOT_NAME = "SebasTian";
 const BOT_EMBED_COLOR = "GOLD";
 const FORUM_CHANNEL_ID = "748976524484542684";
-const DISBOARD_REVIEW_LINK = "https://disboard.com/review";
+const DISBOARD_REVIEW_LINK = "https://disboard.org/server/724039474866159706#reviews";
 
 const DEFAULT_LAST_BUMP_DATE = moment().subtract(1, "days");
 const DISBOARD_BUMP_INTERVAL = 2 * 60 * 60; // 2 hours
