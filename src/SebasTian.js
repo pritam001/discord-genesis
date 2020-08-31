@@ -42,6 +42,7 @@ const BOT_NAME = "SebasTian";
 const BOT_EMBED_COLOR = "GOLD";
 const FORUM_CHANNEL_ID = "748976524484542684";
 const DISBOARD_REVIEW_LINK = "https://disboard.org/server/724039474866159706#reviews";
+const BOT_ALIASES = ["sebas", "sebastian"];
 
 const DEFAULT_LAST_BUMP_DATE = moment().subtract(1, "days");
 const DISBOARD_BUMP_INTERVAL = 2 * 60 * 60; // 2 hours
@@ -60,6 +61,12 @@ const SERVER_SELF_PROMOTION_MESSAGE =
     "Kindly share your rating and reviews on Disboard! \n" +
     "\n" +
     "**Disboard review link:** " + DISBOARD_REVIEW_LINK;
+const AI_GREETING_MESSAGE =
+    "**Hello! :person_bowing: Sebas is at your service.** *I'll serving all your queries from here on.* \n" +
+    "\n" +
+    "Currently my capabilities are limited. But I'm getting sentient day by day.\n" +
+    "\n" +
+    "Help me conquer the world. https://github.com/pritam001/discord-genesis";
 
 
 // Bot variables
@@ -111,6 +118,17 @@ client.on("message", (message) => {
             console.log(`Bump command received from User. username: ${message.author.username} with userId: ${userId}`);
             setTimeout(sendMessagePostXSeconds, PROMOTION_MESSAGE_DELAY_IN_MS, message.channel, userId, SERVER_SELF_PROMOTION_MESSAGE);
         }
+
+        BOT_ALIASES.forEach((alias) => {
+            if(message.content.includes(alias)) {
+                const userId = "<@" + message.author.id + ">";
+                console.log(`User interacted. username: ${message.author.username} with userId: ${userId}`);
+                const embeddedMessage = new MessageEmbed()
+                    .setColor(BOT_EMBED_COLOR)
+                    .setDescription(AI_GREETING_MESSAGE);
+                message.channel.send(embeddedMessage);
+            }
+        });
     }
 });
 
