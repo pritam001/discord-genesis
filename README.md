@@ -14,6 +14,11 @@ Active Bots
 2. Send server bump message.
 3. Send other types of server promoting message.
 
+### ShelBot: Knowledge + Journalist bot
+1. Post daily coding links to channel
+1. Post daily General, JavaScript, Java, Python, Web dev articles post aggregation
+1. Post weekly article aggregation
+
 
 Roadmap
 ----------------------------------------------------------------
