@@ -103,6 +103,12 @@ client.on("ready", () => {
 // bump message handling
 client.on("message", (message) => {
     if(!message.author.bot) {
+        if(message.content === DISBOARD_BUMP_COMMAND) {
+            const userId = "<@" + message.author.id + ">";
+            console.log(`Bump command received from User. username: ${message.author.username} with userId: ${userId}`);
+            setTimeout(sendMessagePostXSeconds, PROMOTION_MESSAGE_DELAY_IN_MS, message.channel, userId, SERVER_SELF_PROMOTION_MESSAGE);
+        }
+
         if(message.content !== DISBOARD_BUMP_COMMAND && last_bump_message_date < moment().subtract(DISBOARD_BUMP_INTERVAL, "seconds")) {
             console.log(`Sending bump message as ${DISBOARD_BUMP_INTERVAL} seconds have passed since the last bump message`);
             const embeddedMessage = new MessageEmbed()
@@ -111,24 +117,20 @@ client.on("message", (message) => {
             message.channel.send(embeddedMessage);
             last_bump_message_date = new Date();
             console.log(`last_bump_message_date changed to : ${last_bump_message_date}`);
+        } else {
+            // send greeting message when bot aliases are mentioned and no other message was triggered
+            let embeddedMessage = null;
+            BOT_ALIASES.forEach((alias) => {
+                if(message.content.includes(alias)) {
+                    const userId = "<@" + message.author.id + ">";
+                    console.log(`User interacted. username: ${message.author.username} with userId: ${userId}`);
+                    embeddedMessage = new MessageEmbed()
+                        .setColor(BOT_EMBED_COLOR)
+                        .setDescription(AI_GREETING_MESSAGE);
+                }
+            });
+            !!embeddedMessage && message.channel.send(embeddedMessage);
         }
-
-        if(message.content === DISBOARD_BUMP_COMMAND) {
-            const userId = "<@" + message.author.id + ">";
-            console.log(`Bump command received from User. username: ${message.author.username} with userId: ${userId}`);
-            setTimeout(sendMessagePostXSeconds, PROMOTION_MESSAGE_DELAY_IN_MS, message.channel, userId, SERVER_SELF_PROMOTION_MESSAGE);
-        }
-
-        BOT_ALIASES.forEach((alias) => {
-            if(message.content.includes(alias)) {
-                const userId = "<@" + message.author.id + ">";
-                console.log(`User interacted. username: ${message.author.username} with userId: ${userId}`);
-                const embeddedMessage = new MessageEmbed()
-                    .setColor(BOT_EMBED_COLOR)
-                    .setDescription(AI_GREETING_MESSAGE);
-                message.channel.send(embeddedMessage);
-            }
-        });
     }
 });
 
